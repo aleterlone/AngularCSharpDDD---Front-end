@@ -1,0 +1,41 @@
+<div class="titulo">Usuários Cadastrados</div>
+
+<hr>
+
+<div>
+    <a routerLink="/usuarios-cadastro">Novo Usuário</a>
+</div>
+
+<hr>
+
+<table>
+    <thead>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>E-mail</th>
+        <th>Data Nascimento</th>
+        <th>Escolaridade</th>
+        <th></th>
+        <th></th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let usuario of usuarios;">
+            <td class="tabela_centro">{{ usuario.id }}</td>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.sobrenome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td class="tabela_centro">{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</td>
+            <td class="tabela_centro">{{ usuario.escolaridade.nome }}</td>
+
+            <td class="tabela_centro">
+                <button type="button" (click)="alterar(usuario.id)">Alterar</button>
+            </td>
+
+            <td class="tabela_centro">
+                <button type="button" (click)="excluir(usuario.id)">Excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

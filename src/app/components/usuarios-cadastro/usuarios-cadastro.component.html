@@ -1,0 +1,74 @@
+<div class="titulo" *ngIf="usuarioAtual == null">Novo Usuário</div>
+<div class="titulo" *ngIf="usuarioAtual != null">Alterar Usuário - {{ usuarioAtual.id }}</div>
+
+<hr>
+
+<div>
+    <a routerLink="/">Voltar</a>
+</div>
+
+<hr>
+
+<form [formGroup]="formDados" (ngSubmit)="enviarFormulario()">
+    <div class="formulario">
+        <div class="formulario_campo">
+            <label>Nome:</label>
+
+            <br>
+
+            <input type="text" name="nome" [ngClass]="{ 'campo_invalido': formEnviado && f.nome.errors?.required }" formControlName="nome" />
+
+            <div class='campo_invalido_mensagem' *ngIf="formEnviado && f.nome.errors?.required">Nome em branco!</div>
+        </div>
+
+        <div class="formulario_campo">
+            <label>Sobrenome:</label>
+
+            <br>
+
+            <input type="text" name="sobrenome" [ngClass]="{ 'campo_invalido': formEnviado && f.sobrenome.errors?.required }" formControlName="sobrenome" />
+
+            <div class='campo_invalido_mensagem' *ngIf="formEnviado && f.nome.errors?.required">Sobrenome em branco!</div>
+        </div>
+
+        <div class="formulario_campo">
+            <label>E-mail:</label>
+
+            <br>
+
+            <input type="text" name="email" [ngClass]="{ 'campo_invalido': formEnviado && f.email.errors?.required }" formControlName="email" />
+
+            <div class='campo_invalido_mensagem' *ngIf="formEnviado && f.nome.errors?.required">E-mail em branco!</div>
+        </div>
+
+        <div class="formulario_campo">
+            <label>Data Nascimento:</label>
+
+            <br>
+
+            <input type="text" name="dataNascimento" [ngClass]="{ 'campo_invalido': formEnviado && f.dataNascimento.errors?.required }" formControlName="dataNascimento" />
+
+            <div class='campo_invalido_mensagem' *ngIf="formEnviado && f.nome.errors?.required">Data Nascimento em branco!</div>
+        </div>
+
+        <div class="formulario_campo">
+            <label>Escolaridade:</label>
+
+            <br>
+
+            <select formControlName="escolaridade" [ngClass]="{ 'campo_invalido': formEnviado && f.escolaridade.errors?.required }">
+                <option *ngFor="let opt of escolaridades" [ngValue]="opt.id" [selected]="opt.id == f.escolaridade.id">
+                    {{ opt.nome }}
+                </option>
+            </select>
+
+            <div class='campo_invalido_mensagem' *ngIf="formEnviado && f.escolaridade.errors?.required">Escolaridade em branco!</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="rodape_acoes">
+        <button type="submit">Salvar</button>
+    </div>
+</form>

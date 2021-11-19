@@ -1,0 +1,32 @@
+.titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+}
+.formulario_campo {
+    padding-bottom: 10px;
+}
+.campo_invalido {
+    border-color: #ff0000;
+}
+.campo_invalido_mensagem {
+    padding-top: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #ff0000;
+}
+
+table {
+    border: 1px solid #000;
+    width: 100%;
+}
+td,
+th {
+    border: 1px solid #000;
+}
+.tabela_centro {
+    text-align: center;
+}
